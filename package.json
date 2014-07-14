@@ -1,0 +1,23 @@
+{
+  "name": "panel-error",
+  "version": "1.0.0",
+  "description": "Client library for handling compilation errors in panel-static",
+  "main": "lib/error.js",
+  "scripts": {
+    "prepublish": "./node_modules/.bin/browserify -t coffeeify --extension=\".coffee\" src/main.coffee | ./node_modules/.bin/uglifyjs > lib/error.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/panels/error"
+  },
+  "bugs": {
+    "url": "https://github.com/panels/error/issues"
+  },
+  "author": "Marek Hrabe <marekhrabe@abdoc.net> (https://github.com/marekhrabe)",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^4.1.10",
+    "coffeeify": "^0.6.0",
+    "uglify-js": "^2.4.14"
+  }
+}
