@@ -8,10 +8,10 @@ unless window.panelErrorLoaded
       bridge._startDebugMode()
 
     if window._panelErrors?.length > 0
-      for err in window._panelErrors
-        console.error err
+      while window._panelErrors.length > 0
+        console.error '[compilation-error]', window._panelErrors.pop()
     else
-      console.error 'Some error occured while trying to compile files on this page. Please refer to Terminal for more info'
+      console.error '[compilation-error]', 'Some error occured while trying to compile files on this page. Please refer to Terminal for more info'
 
   initErrorHandler = ->
     if window.Bridge
@@ -21,7 +21,7 @@ unless window.panelErrorLoaded
       script.src = '/_panels/bridge.js'
       script.onlaod = showErrors
       script.onerror = ->
-        console.error 'Bridge client library cannot be loaded. Make sure your backend is live'
+        console.error '[compilation-error]', 'Bridge client library cannot be loaded. Make sure your backend is live'
       document.body.appendChild script
 
   if document.readyState is 'complete'
